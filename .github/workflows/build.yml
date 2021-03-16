@@ -8,7 +8,8 @@ jobs:
       - name: Login to GitHub Packages
         uses: docker/login-action@v1
         with:
-          username: ${{ github.actor }}
+          registry: docker.pkg.github.com
+          username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
