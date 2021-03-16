@@ -8,6 +8,5 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
         with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          push: true
           tags: docker.pkg.github.com/${{ github.repository }}/promtail-config-generator:latest
