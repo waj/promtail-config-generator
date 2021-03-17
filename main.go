@@ -50,7 +50,7 @@ func main() {
 				Labels: map[string]string{
 					"__path__": containerInspect.LogPath,
 					"stack":    stackAndService[0],
-					"service":  stackAndService[1],
+					"service":  rancherStackService,
 				},
 			}
 
