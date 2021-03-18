@@ -18,6 +18,11 @@ type promtailConfig struct {
 }
 
 func main() {
+	environment, found := os.LookupEnv("ENV")
+	if !found {
+		log.Fatalln("ENV environment variable missing")
+	}
+
 	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
 	defer cancel()
 
@@ -51,6 +56,7 @@ func main() {
 					"__path__": containerInspect.LogPath,
 					"stack":    stackAndService[0],
 					"service":  rancherStackService,
+					"env":      environment,
 				},
 			}
 
